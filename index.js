@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const { notFoundHandler, errorHandler } = require('./middleware/default_error/error_handler')
 const userRegister = require('./router/users/userRegister')
 const userContact = require('./router/contact/userContact')
+const userBlog = require('./router/blog/userBlog')
 const dbConnect = require("./database/database")
 
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // route setup
 app.use("/api/v1/user", userRegister)
 app.use("/api/v1/contact", userContact)
+app.use("/api/v1/blog", userBlog)
 
 // 404 not found setup
 // app.use(notFoundHandler);

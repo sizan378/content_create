@@ -3,14 +3,19 @@ const mongoose = require( 'mongoose');
 const blogSchema = mongoose.Schema({
   title: {
     type: String, 
+    required: true,
+    trim: true
   },
   author:{
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
   },
   body: {
     type: String,
+    required: true,
   },
-  comments: [{ body: {type: String} , date: Date }],
+  comments: [{ user_id: {type: String}, user_name: {type: String}, body: {type: String} , date: Date }],
   date: { type: Date, default: Date.now },
   hidden: Boolean,
   meta: {
